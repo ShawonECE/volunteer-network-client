@@ -1,0 +1,21 @@
+.nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 550;
+}
+
+.log-in-btn {
+    padding: 10px 20px 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3F90FC;
+    color: white;
+}
+
+.admin-btn {
+    padding: 10px 20px 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #434141;
+    color: white;
+}

@@ -1,0 +1,22 @@
+.work {
+    position: relative;
+    cursor: pointer;
+}
+
+.hover-text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.work:hover .hover-text {
+    opacity: 1;
+}
+
+.inp-field {
+    margin-bottom: 15px;
+}
