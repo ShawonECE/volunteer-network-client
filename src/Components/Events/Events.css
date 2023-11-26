@@ -1,0 +1,12 @@
+.event-card img {
+    padding: 8%;
+}
+
+.event-card {
+    border: none !important;
+    box-shadow: 0.3px 0.1px 10px rgb(133, 133, 133);
+}
+
+.cancel-btn {
+    margin-top: 8%;
+}

@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../Utilities/logos/Group 1329.png';
 import './NavigationBar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
 import { getAuth, signOut } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../../firebase-config';
 
 const NavigationBar = () => {
+    const navigate = useNavigate();
     const defaultUser = {
         isLoggedIn: false,
         name: '',
@@ -27,6 +28,12 @@ const NavigationBar = () => {
             console.log(error.message);
         });
     };
+    const handleAdmin = () => {
+        navigate('/admin');
+    }
+    const handleLogin = () => {
+        navigate('/login');
+    }
     return (
         <Navbar expand="lg" className="bg-body-transparent">
             <Container>
@@ -39,15 +46,15 @@ const NavigationBar = () => {
                     <Nav className="ms-auto">
                         <Nav.Link className='nav-item'><Link to='/' style={{textDecoration: 'none'}}>Home</Link></Nav.Link>
                         <Nav.Link className='nav-item'>Donation</Nav.Link>
-                        <Nav.Link className='nav-item'>Events</Nav.Link>
+                        <Nav.Link className='nav-item'><Link to='/events' style={{textDecoration: 'none'}}>Events</Link></Nav.Link>
                         <Nav.Link className='nav-item'>Blog</Nav.Link>
                         {
                             loggedInUser.isLoggedIn?
                             <button onClick={handleLogOut} className='nav-item log-in-btn'>Log out</button>
                             :
-                            <button className='nav-item log-in-btn'><Link to='/login' style={{textDecoration: 'none', color: 'white'}}>Log in</Link></button>
+                            <button className='nav-item log-in-btn' onClick={handleLogin}>Log in</button>
                         }
-                        <button className='nav-item admin-btn'>Admin</button>
+                        <button className='nav-item admin-btn' onClick={handleAdmin}>Admin</button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

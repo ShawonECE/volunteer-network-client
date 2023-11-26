@@ -1,0 +1,21 @@
+.options {
+    color: #3F90FC;
+    margin-bottom: 2vh;
+}
+
+.options img {
+    width: 15px;
+    margin-right: 5px;
+}
+
+#options-col {
+    padding: 0 0 10vh 30px;
+}
+
+#options-col h6 {
+    margin: 0;
+}
+
+#table-col {
+    padding: 0 15px 0 15px;
+}

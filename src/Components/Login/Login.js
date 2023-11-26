@@ -5,8 +5,11 @@ import { initializeApp } from "firebase/app";
 import firebaseConfig from '../../firebase-config';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { UserContext } from '../../App';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const app = initializeApp(firebaseConfig);
     const provider = new GoogleAuthProvider();
@@ -22,9 +25,22 @@ const Login = () => {
             photo: photoURL
             };
             setLoggedInUser(userLoggedIn);
+            storeAuthToken();
+            
+            if(location.state?.from) {
+                navigate(location.state.from);
+            }
         })
         .catch(error => console.log(error));
     }
+
+    const storeAuthToken = () => {
+        getAuth().currentUser.getIdToken(true).then(function(idToken) {
+          sessionStorage.setItem('authToken', idToken);
+        }).catch(function(error) {
+          console.log(error);
+        });
+      };
     return (
         <div>
             <br /><br /><br /><br /><br />
